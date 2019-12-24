@@ -43,7 +43,7 @@ class ParkingLotManage:
             self.car_num_list.append(car.num)
             car.time_in = datetime.datetime.now()
             car.time_out = None
-            space_num = self.count.pop(random.randint(0, 99))
+            space_num = self.count.pop(random.randint(0, len(self.count)-1))
             setattr(car, 'space_num', space_num)
 
             self.cars_infor[car.num] = car
