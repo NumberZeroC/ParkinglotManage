@@ -70,7 +70,8 @@ class ParkingLotManage:
         self.cars_infor[car.num] = lists
         print(lists)
 
-    def parking_fee(self, car):
+    @staticmethod
+    def parking_fee(car):
         """ 停车费 """
         time_out = datetime.datetime.now()
         car.time_out = time_out
@@ -106,9 +107,11 @@ class ParkingLotManage:
                         for d in range(len(data)):
                             if isinstance(data[d], datetime.datetime):
                                 data[d] = data[d].strftime("%Y-%m-%d %H:%M:%S")
-                            elif isinstance(data[d],int):
+                            elif isinstance(data[d], int):
                                 data[d] = str(data[d])
                         print(' '.join(data[:-2]))
+                else:
+                    print('暂无汽车信息')
         else:
             print('汽车{}于{}停在{}号车位'.format(num, car.time_in, car.space_num))
 
