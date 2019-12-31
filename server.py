@@ -35,6 +35,7 @@ def receive():
                 con.send(json.dumps(parking.car_num_list).encode('utf-8'))
 
             except Exception as e:
+                print(e)
                 break
 
 

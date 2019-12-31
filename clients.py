@@ -17,7 +17,7 @@ def send_info():
         msg = yield car_list
         if msg:
             s.send(msg.encode('utf-8'))
-        print('发送完成')
+            print('发送完成')
 
         message = s.recv(1024)
         message.decode('utf-8')
