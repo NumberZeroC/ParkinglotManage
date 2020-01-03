@@ -59,6 +59,8 @@ class ParkingLotManage:
         """汽车离开停车场，传入Car类型或car_num"""
         if isinstance(car, str):
             car = self.cars_infor[car]
+        time_out = datetime.datetime.now()
+        car.time_out = time_out
         self.count.append(car.space_num)
         self.car_num_list.remove(car.num)
         print(f'汽车{car.num}离开停车场,时间{car.time_out}')
@@ -73,8 +75,7 @@ class ParkingLotManage:
     @staticmethod
     def parking_fee(car):
         """ 停车费 """
-        time_out = datetime.datetime.now()
-        car.time_out = time_out
+        time_out = car.time_out
         time_in = car.time_in
         time = time_out - time_in
         print('汽车：{} 在停车场停留时间：{}'.format(car.num, time))
@@ -92,7 +93,7 @@ class ParkingLotManage:
         num = car
         car = self.cars_infor.get(num, None)
         if num not in self.car_num_list:
-            print('汽车{} 现在不在号车位'.format(num))
+            print('汽车{} 现在不在停车场'.format(num))
             if car:
                 print('汽车{}在停车场的时间段是{}-{}'.format(num, car.time_in, car.time_out))
             else:
